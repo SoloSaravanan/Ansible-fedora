@@ -1,0 +1,6 @@
+- name: Fedora post install 
+  hosts: localhost
+
+  tasks:
+  - name: check packages for updates
+    shell: sudo dnf upgrade -y
