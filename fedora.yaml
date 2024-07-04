@@ -1,6 +1,6 @@
 - name: Fedora post install 
   hosts: localhost
-
+  connection: local
   tasks:
   - name: Configure dnf
     shell: sudo sed -i '8 amax_parallel_downloads=10 ' /etc/dnf/dnf.conf && sudo sed -i '9 acountme=false' /etc/dnf/dnf.conf
@@ -21,6 +21,6 @@
       autoremove: yes
     register: fed_autoremoved_packages
 
-  - name: Show installed applications
+  - name: Show autoremoved applications
     ansible.builtin.debug:
       var: fed_autoremoved_packages.results|d()
