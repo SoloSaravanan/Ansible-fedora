@@ -1,0 +1,16 @@
+---
+- name: Configuring dnf
+  shell: sudo sed -i '8 amax_parallel_downloads=10 ' /etc/dnf/dnf.conf && sudo sed -i '9 acountme=false' /etc/dnf/dnf.conf
+
+- name: Check updates and install
+  dnf:
+    update_cache: true
+    name: "*"
+    state: latest
+  register: fed_updated_packages
+  become: true
+  become_method: sudo
+  
+- name: Show installed applications
+  ansible.builtin.debug:
+    var: fed_updated_packages.results|d()

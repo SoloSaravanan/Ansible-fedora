@@ -1,0 +1,22 @@
+  - name: Debloating Fedora
+    dnf:
+      name: gnome-disk-utility,filelight,khelpcenter,im-chooser,kjournald,kcharselect,kdeconnectd,kdebugsettings,kfind,kmousetool,krfb,kwalletmanager5,kwrite,system-config-language,abrt-desktop,setroubleshoot,plasma-welcomeplasma-thunderbolt,zram-generator
+      state: absent
+    register: fed_debloated_packages
+    become: true
+    become_method: sudo
+
+  - name: Showing debloated applications
+    ansible.builtin.debug:
+      var: fed_debloated_packages.results|d()
+
+  - name: Autoremove unneeded packages installed as dependencies
+    dnf:
+      autoremove: yes
+    register: fed_autoremoved_packages
+    become: true
+    become_method: sudo
+
+  - name: Show autoremoved applications
+    ansible.builtin.debug:
+      var: fed_autoremoved_packages.results|d()
