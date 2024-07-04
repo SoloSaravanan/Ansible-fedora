@@ -2,5 +2,14 @@
   hosts: localhost
 
   tasks:
-  - name: check packages for updates
-    shell: sudo dnf upgrade -y
+  - name: Configure dnf
+    shell: sudo sed -i '8 amax_parallel_downloads=10 ' /etc/dnf/dnf.conf && sudo sed -i '9 acountme=false' /etc/dnf/dnf.conf
+
+  - name: Check updates and install
+    dnf:
+      name: "*"
+      state: latest
+
+  - name: Autoremove unneeded packages installed as dependencies
+    dnf:
+      autoremove: yes
