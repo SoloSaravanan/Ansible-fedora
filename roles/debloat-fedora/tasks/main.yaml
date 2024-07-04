@@ -1,6 +1,6 @@
   - name: Debloating Fedora
     dnf:
-      name: gnome-disk-utility,filelight,khelpcenter,im-chooser,kjournald,kcharselect,kdeconnectd,kdebugsettings,kfind,kmousetool,krfb,kwalletmanager5,kwrite,system-config-language,abrt-desktop,setroubleshoot,plasma-welcomeplasma-thunderbolt,zram-generator
+      name: gnome-disk-utility,filelight,khelpcenter,im-chooser,kjournald,kcharselect,kdeconnectd,kdebugsettings,kfind,kmousetool,krfb,kwalletmanager5,kwrite,system-config-language,abrt,setroubleshoot,plasma-welcome,plasma-thunderbolt,zram-generator
       state: absent
     register: fed_debloated_packages
     become: true
