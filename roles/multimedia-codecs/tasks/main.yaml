@@ -6,5 +6,10 @@
     exclude: zram-generator-defaults,PackageKit-gstreamer-plugin,gstreamer1-plugins-bad-free-devel,gstreamer1-plugins-bad-free-opencv,lame-devel
     install_weak_deps: no
     allowerasing: yes
+  register: fed_installed_multimedia
   become: true
   become_method: sudo
+
+- name: Show installed applications
+  ansible.builtin.debug:
+    var: fed_installed_multimedia.results|d()
