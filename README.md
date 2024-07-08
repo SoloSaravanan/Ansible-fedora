@@ -6,5 +6,9 @@ How to install?
 sudo dnf install git-core ansible -y
 git clone https://github.com/SoloSaravanan/Ansible-fedora
 cd Ansible-fedora
-ansible-playbook fedora.yaml
+```
+
+Replace password with your password
+```sh
+ansible-playbook fedora.yaml -e "ansible_sudo_pass= password"
 ```

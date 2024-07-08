@@ -1,6 +1,8 @@
 ---
 - name: Configuring dnf
-  shell: sudo sed -i '8 amax_parallel_downloads=10 ' /etc/dnf/dnf.conf && sudo sed -i '9 acountme=false' /etc/dnf/dnf.conf
+  shell: sed -i '9a max_parallel_downloads=10' /etc/dnf/dnf.conf && sed -i '10a countme=false' /etc/dnf/dnf.conf
+  become: true
+  become_method: sudo
 
 - name: Check updates and install
   dnf:
