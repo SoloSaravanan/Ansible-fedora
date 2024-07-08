@@ -3,6 +3,7 @@
   dnf:
     name: 'https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-40.noarch.rpm'
     state: present
+    disable_gpg_check: yes
   become: true
   become_method: sudo
 
@@ -10,6 +11,7 @@
   dnf:
     name: 'https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-40.noarch.rpm'
     state: present
+    disable_gpg_check: yes
   become: true
   become_method: sudo
 
