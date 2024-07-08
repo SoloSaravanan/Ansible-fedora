@@ -4,3 +4,4 @@
   roles:
     - role: "roles/update-fedora"
     - role: "roles/debloat-fedora"
+    - role: "roles/rpm-fusion"
