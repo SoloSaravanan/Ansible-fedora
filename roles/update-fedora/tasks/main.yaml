@@ -1,6 +1,13 @@
 ---
 - name: Configuring dnf
-  shell: sed -i '9a max_parallel_downloads=10' /etc/dnf/dnf.conf && sed -i '10a countme=false' /etc/dnf/dnf.conf
+  ansible.builtin.lineinfile:
+    path: /etc/dnf/dnf.conf
+    state: present
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+  loop:
+    - { regexp: '^max_parallel_downloads', line: 'max_parallel_downloads=10' }
+    - { regexp: '^countme', line: 'countme=false' }
   become: true
   become_method: sudo
 
