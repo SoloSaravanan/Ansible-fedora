@@ -1,5 +1,5 @@
 ---
-- name: Installing and settingup KVM
+- name: Installing and setting up KVM
   dnf:
     name: '@virtualization'
     state: latest
@@ -12,7 +12,7 @@
     state: started
   become: true
 
-- name: Configuring dnf
+- name: Configuring libvirtd
   lineinfile:
     path: /etc/libvirt/libvirtd.conf
     state: present
