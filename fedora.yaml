@@ -6,3 +6,4 @@
     - role: "roles/debloat-fedora"
     - role: "roles/rpm-fusion"
     - role: "roles/multimedia-codecs"
+    - role: "roles/kvm"
