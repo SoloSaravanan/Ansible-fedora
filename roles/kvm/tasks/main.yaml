@@ -25,7 +25,7 @@
 
 - name: Add the user to libvirt group'
   user:
-    name: "{{ ansible_env.USER }}"
+    name: "{{ lookup('env','USER') }}"
     groups: libvirt
     append: yes
   become: true
