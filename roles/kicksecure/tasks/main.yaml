@@ -1,5 +1,4 @@
 ---
-
 - name: Adding Kicksecure patches
   get_url:
     url: "{{ item.url }}"
@@ -10,4 +9,23 @@
     - { url: 'https://raw.githubusercontent.com/Kicksecure/security-misc/master/etc/default/grub.d/40_cpu_mitigations.cfg', dest: '/etc/grub.d/40_cpu_mitigations.cfg' }
     - { url: 'https://raw.githubusercontent.com/Kicksecure/security-misc/master/etc/default/grub.d/40_distrust_cpu.cfg', dest: '/etc/grub.d/40_distrust_cpu.cfg' }
     - { url: 'https://raw.githubusercontent.com/Kicksecure/security-misc/master/etc/default/grub.d/40_enable_iommu.cfg', dest: '/etc/grub.d/40_enable_iommu.cfg' }
+  become: true
+
+- name: creating directory
+  file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+  - /etc/systemd/system/NetworkManager.service.d
+  - /etc/systemd/system/irqbalance.service.d
+  become: true
+
+- name: Divestos patches
+  get_url:
+    url: "{{ item.url }}"
+    dest: "{{ item.dest }}"
+    mode: '0755'
+  loop:
+    - { url: 'https://gitlab.com/divested/brace/-/raw/master/brace/usr/lib/systemd/system/NetworkManager.service.d/99-brace.conf', dest: '/etc/systemd/system/NetworkManager.service.d/99-brace.conf' }
+    - { url: 'https://gitlab.com/divested/brace/-/raw/master/brace/usr/lib/systemd/system/irqbalance.service.d/99-brace.conf', dest: '/etc/systemd/system/irqbalance.service.d/99-brace.conf' }
   become: true
