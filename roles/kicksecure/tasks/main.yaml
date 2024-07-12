@@ -1,0 +1,13 @@
+---
+
+- name: Adding Kicksecure patches
+  get_url:
+    url: "{{ item.url }}"
+    dest: "{{ item.dest }}"
+    mode: '0755'
+  loop:
+    - { url: 'https://raw.githubusercontent.com/Kicksecure/security-misc/master/etc/modprobe.d/30_security-misc.conf', dest: '/etc/modprobe.d/30_security-misc.conf' }
+    - { url: 'https://raw.githubusercontent.com/Kicksecure/security-misc/master/etc/default/grub.d/40_cpu_mitigations.cfg', dest: '/etc/grub.d/40_cpu_mitigations.cfg' }
+    - { url: 'https://raw.githubusercontent.com/Kicksecure/security-misc/master/etc/default/grub.d/40_distrust_cpu.cfg', dest: '/etc/grub.d/40_distrust_cpu.cfg' }
+    - { url: 'https://raw.githubusercontent.com/Kicksecure/security-misc/master/etc/default/grub.d/40_enable_iommu.cfg', dest: '/etc/grub.d/40_enable_iommu.cfg' }
+  become: true

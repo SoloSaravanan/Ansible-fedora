@@ -1,3 +1,4 @@
+---
 - name: Fedora post install 
   hosts: localhost
   connection: local
@@ -7,3 +8,4 @@
     - role: "roles/rpm-fusion"
     - role: "roles/multimedia-codecs"
     - role: "roles/kvm"
+    - role: "roles/kicksecure"
