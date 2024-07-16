@@ -1,0 +1,36 @@
+---
+- name: Remove Firewalld's Default Rules
+  ansible.posix.firewalld:
+    service: ssh
+    zone: public
+    permanent: true
+    state: disabled
+  become: true  
+
+- ansible.posix.firewalld:
+    service: mdns
+    zone: public
+    permanent: true
+    state: disabled
+  become: true  
+
+- ansible.posix.firewalld:
+    service: samba-client
+    zone: public
+    permanent: true
+    state: disabled
+  become: true  
+
+- ansible.posix.firewalld:
+    port: 1025-65535/udp
+    zone: public
+    permanent: true
+    state: disabled
+  become: true
+
+- ansible.posix.firewalld:
+    port: 1025-65535/tcp
+    zone: public
+    permanent: true
+    state: disabled
+  become: true

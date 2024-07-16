@@ -9,3 +9,4 @@
     - role: "roles/multimedia-codecs"
     - role: "roles/kvm"
     - role: "roles/kicksecure"
+    - role: "roles/firewall"
