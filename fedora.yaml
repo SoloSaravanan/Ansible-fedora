@@ -8,6 +8,6 @@
     - role: "roles/rpm-fusion"
     - role: "roles/multimedia-codecs"
     - role: "roles/firewall"
-    - role: "roles/kicksecure"
+#    - role: "roles/kicksecure"
     - role: "roles/kvm"
     - role: "roles/apps"
