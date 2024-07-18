@@ -20,3 +20,11 @@
 - name: Show installed applications
   ansible.builtin.debug:
     var: fed_installed_packages.results|d()
+
+- name: Only Office
+  dnf:
+    name: 'https://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors.x86_64.rpm'
+    state: present
+    disable_gpg_check: yes
+  become: true
+  become_method: sudo
