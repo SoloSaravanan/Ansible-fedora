@@ -21,6 +21,23 @@
   ansible.builtin.debug:
     var: fed_installed_packages.results|d()
 
+- name: Enable Spotify repo
+  yum_repository:
+    name: Spotify
+    description: Spotify
+    baseurl: https://negativo17.org/repos/spotify/fedora-$releasever/$basearch/
+    gpgcheck: no
+    file: Spotify
+  become: true
+  become_method: sudo
+
+- name: Spotify
+  dnf:
+   name: spotify-client
+   state: latest
+  become: true
+  become_method: sudo
+
 - name: Only Office
   dnf:
     name: 'https://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors.x86_64.rpm'
