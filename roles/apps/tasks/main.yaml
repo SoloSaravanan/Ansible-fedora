@@ -38,6 +38,14 @@
   become: true
   become_method: sudo
 
+- name: VScode
+  dnf:
+    name: 'https://packages.microsoft.com/yumrepos/vscode/Packages/c/code-1.91.1-1720564728.el8.x86_64.rpm'
+    state: present
+    disable_gpg_check: yes
+  become: true
+  become_method: sudo
+
 - name: Only Office
   dnf:
     name: 'https://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors.x86_64.rpm'
