@@ -1,0 +1,34 @@
+---
+- name: Enabling Nvidia opensource driver repo
+  dnf:
+    name: "rpmfusion-nonfree-release-tainted"
+    state: latest
+  become: true
+
+- name: Installing Nvidia Drivers
+  dnf:
+    name:
+      - akmod-nvidia-open
+      - xorg-x11-drv-nvidia-cuda
+      - xorg-x11-drv-nvidia-cuda-libs
+      - vulkan
+      - nvidia-vaapi-driver
+      - libva-utils
+      - vdpauinfo
+      - nvidia-gpu-firmware
+      - xorg-x11-drv-nvidia-power
+    state: latest
+  register: fed_installed_nvidia
+  become: true
+
+- name: Enable Nvidia services
+  shell: systemctl enable nvidia-{suspend,resume,hibernate,powerd}
+  become: true
+
+- name: Start Nvidia powerd services
+  shell: systemctl start nvidia-powerd
+  become: true
+
+- name: Showing installed applications
+  debug:
+    var: fed_installed_nvidia.results|d()

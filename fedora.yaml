@@ -11,3 +11,4 @@
 #    - role: "roles/kicksecure"
     - role: "roles/kvm"
     - role: "roles/apps"
+    - role: "roles/nvidia"
