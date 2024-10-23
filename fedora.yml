@@ -1,0 +1,14 @@
+---
+- name: Fedora post install 
+  hosts: localhost
+  connection: local
+  roles:
+    - role: "roles/update-fedora.yml"
+    - role: "roles/debloat-fedora.yml"
+    - role: "roles/rpm-fusion.yml"
+    - role: "roles/multimedia-codecs.yml"
+    - role: "roles/firewall.yml"
+#    - role: "roles/kicksecure.yml"
+    - role: "roles/kvm.yml"
+    - role: "roles/apps.yml"
+    - role: "roles/nvidia.yml"
